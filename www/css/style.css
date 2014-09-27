@@ -1,0 +1,16 @@
+/* Empty. Add your own CSS if you like */
+.row {
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-content: stretch;
+    -webkit-align-items: center;
+}
+
+.col {
+	text-align: center;
+}
+
+.icon {
+	font-size: 90px;
+	color: blue;
+}
