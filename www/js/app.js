@@ -17,3 +17,39 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+
+.config(function($stateProvider, $urlRouterProvider) {
+
+  $stateProvider
+    .state('signin', {
+      url: "/sign-in",
+      templateUrl: "sign-in.html",
+      controller: 'SignInCtrl'
+    })
+    .state('forgotpassword', {
+      url: "/forgot-password",
+      templateUrl: "forgot-password.html"
+    })
+    .state('home', {
+      url: "/home",
+      templateUrl: "home.html",
+      controller: 'HomeTabCtrl'
+    });
+
+   $urlRouterProvider.otherwise("/sign-in");
+
+})
+
+.controller('SignInCtrl', function($scope, $state) {
+  
+  $scope.signIn = function(user) {
+    console.log('Sign-In', user);
+    $state.go('home');
+  };
+  
+})
+
+.controller('HomeTabCtrl', function($scope) {
+  console.log('HomeTabCtrl');
+});
