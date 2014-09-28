@@ -1,14 +1,14 @@
 10
 
 dir
-2050
+2047
 http://CHEN0819@172.21.147.162:8083/svn/CZ3002_CSC303/BCG3/YOLO/Code%20Repo
 http://CHEN0819@172.21.147.162:8083/svn/CZ3002_CSC303
 
 
 
-2014-09-27T10:41:35.216296Z
-2050
+2014-09-27T05:02:09.916188Z
+2047
 CHEN0819
 
 
@@ -28,7 +28,7 @@ e26c24cb-5062-da45-afc3-8ce90a27b38c
 
 .bowerrc
 file
-
+2048
 
 
 
@@ -68,7 +68,7 @@ dir
 
 gulpfile.js
 file
-
+2048
 
 
 
@@ -105,7 +105,7 @@ dir
 
 package.json
 file
-
+2048
 
 
 
@@ -139,7 +139,7 @@ CHEN0819
 
 config.xml
 file
-
+2048
 
 
 
@@ -176,7 +176,7 @@ dir
 
 .gitignore
 file
-
+2048
 
 
 
@@ -210,7 +210,7 @@ CHEN0819
 
 bower.json
 file
-
+2048
 
 
 
@@ -244,7 +244,7 @@ CHEN0819
 
 ionic.project
 file
-
+2048
 
 
 
@@ -277,9 +277,6 @@ CHEN0819
 38
 
 platforms
-dir
-
-Branch iOS
 dir
 
 scss

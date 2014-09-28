@@ -1,7 +1,7 @@
 10
 
 dir
-2050
+2048
 http://CHEN0819@172.21.147.162:8083/svn/CZ3002_CSC303/BCG3/YOLO/Code%20Repo/www/img
 http://CHEN0819@172.21.147.162:8083/svn/CZ3002_CSC303
 
@@ -25,20 +25,6 @@ CHEN0819
 
 
 e26c24cb-5062-da45-afc3-8ce90a27b38c
-
-appointment.png
-file
-0
-
-
-add
-
-
-
-
-
-has-props
-has-prop-mods
 
 ionic.png
 file
@@ -73,32 +59,4 @@ has-props
 
 
 4757
-
-health.png
-file
-0
-
-
-add
-
-
-
-
-
-has-props
-has-prop-mods
-
-doctor.png
-file
-0
-
-
-add
-
-
-
-
-
-has-props
-has-prop-mods
 
