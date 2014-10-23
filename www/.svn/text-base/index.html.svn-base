@@ -1,131 +1,562 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<title>EZ-Life</title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+	<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+	<!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+	<link href="css/ionic.app.css" rel="stylesheet">
+	-->
 
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+	<script src="lib/ionic/js/ionic.bundle.js"></script>
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+	<script src="cordova.js"></script>
 
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-  </head>
-  <body ng-app="starter">
+	<script src="js/app.js"></script>
+</head>
+<body ng-app="ezlife">
 
-    <ion-nav-bar animation="nav-title-slide-ios7" class="bar-positive">
-      <ion-nav-back-button class="button-icon ion-ios7-arrow-back"></ion-nav-back-button>
-    </ion-nav-bar>
+<ion-nav-bar animation="nav-title-slide-ios7" class="bar-calm">
+	<ion-nav-back-button class="button-icon ion-ios7-arrow-back">Back</ion-nav-back-button>
+</ion-nav-bar>
 
-    <ion-nav-view animation="slide-left-right"></ion-nav-view>
+<ion-nav-view animation="slide-left-right"></ion-nav-view>
 
-    <script id="sign-in.html" type="text/ng-template">
-      <ion-view title="Sign-In" hide-nav-bar="true">
-        <ion-content has-header="false">
-          <div class="list">
-            <label class="item item-input">
-              <span class="input-label">Username</span>
-              <input type="text" ng-model="user.username">
-            </label>
-            <label class="item item-input">
-              <span class="input-label">Password</span>
-              <input type="password" ng-model="user.password">
-            </label>
-          </div>
-          <div class="padding">
-            <button class="button button-block button-positive" ng-click="signIn(user)">
-              Sign-In
-            </button>
-            <p class="text-center">
-              <a href="#/forgot-password">Forgot password</a>
-            </p>
-          </div>
-        </ion-content>
-      </ion-view>
-    </script>
-
-    <script id="forgot-password.html" type="text/ng-template">
-      <ion-view title="Forgot Password">
-        <ion-content has-header="true" padding="true">
-          <p>
-            something here
-          </p>
-          <p>
-            something more here
-          </p>
-          <p>
-            Return to <a href="#/sign-in">Sign-In</a>.
-          </p>
-        </ion-content>
-      </ion-view>
-    </script>
-
-    <script id="home.html" type="text/ng-template">
-      <ion-view title="Home" hide-nav-bar="true">
-        <ion-content has-header="true" padding="false">
-          <div class="row" style="background-color: purple;">
-            <a class="col col-100" href="">
-              <h1>Today</h1>
-              <h2>11:20</h2>
-            </a>
-          </div>
-
-
-          <div class="row row-center" style="margin: 0px">
-            <a class="col col-50 icon border right-border" href="">
-              <img src="img/doctor.png" style="width: 70px; height: 70px;">
-              <div class="icon-title">
-                Doctor
-              </div>
-            </a>
-            <a class="col col-50 icon" href="">
-              <img src="img/health.png" style="width: 70px; height: 70px;">
-              <div class="icon-title">
-                Health
-              </div>
-            </a>
-          </div>
-
-          <div class="row row-center" style="">
-            <a class="col col-50 icon ion-ios7-alarm border right-border top-border" href="">
-              <div class="icon-title">
-                Reminders
-              </div>
-            </a>
-            <a class="col col-50 icon top-border border" href="">
-              <img src="img/appointment.png" style="width: 70px; height: 70px;">
-              <div class="icon-title">
-                Appointments
-              </div>
-            </a>
-          </div>
-
-          <div class="row row-center" style="">
-            <a class="col col-50 icon ion-ios7-cog border right-border top-border" href="">
-              <div class="icon-title">
-                Settings
-              </div>
-            </a>
-            <a class="col col-50 icon ion-log-out top-border border" href="">
-              <div class="icon-title">
+<script id="home.html" type="text/ng-template">
+	<ion-view title="Home" hide-nav-bar="false">
+        <ion-nav-buttons side="right" >
+            <button class="button button-clear" ng-click="logout()">
                 Logout
-              </div>
+            </button>
+        </ion-nav-buttons>
+		<ion-content has-header="true" padding="false" id="home">
+			<a class="row" style="background-color: deepskyblue; height: 153px;" href="" ng-click="go('today')">
+				<div class="col col-90 today-header" style="padding-left: 10px !important; color: whitesmoke;">
+					<h1>October 14<sup>th</sup></h1>
+					<h2>Thursday</h2>
+				</div>
+				<div class="col col-10 icon ion-ios7-arrow-forward" style="color: whitesmoke; font-size: 30px;"></div>
+                <!--<div class="col col-50">-->
+	                <!--<div style="float: right; " class="today-header">-->
+		                <!--<h1>October 14th</h1>-->
+		                <!--<h2>Thursday</h2>-->
+		                <!--<div class="col col-10 icon ion-ios7-arrow-forward" style="color: whitesmoke"></div>-->
+	                <!--</div>-->
+				<!--</div>-->
+			</a>
+
+			<!--<a class="row" style="background-color: #43cee6; height: 52px;;" href="" ng-click="go('tomorrow')">-->
+				<!--<div class="col col-90" style="padding-left: 10px !important; color: whitesmoke;">Tomorrow</div>-->
+				<!--<div class="col col-10 icon ion-ios7-arrow-forward" style="color: whitesmoke"></div>-->
+			<!--</a>-->
+
+			<div class="row" style="">
+				<a class="col col-50 border right-border top-border" href="" ng-click="go('doctor')">
+					<div class="row" style="">
+							<img src="img/doctor_icon.png" style="width: 40px; height: 40px;">
+							Doctor
+					</div>
+				</a>
+				<a class="col col-50 border top-border" href="" ng-click="go('search')">
+					<div class="row" style="">
+						<img src="img/search.png" style="width: 40px; height: 40px;">
+						Search
+					</div>
+				</a>
+			</div>
+
+			<div class="row" style="">
+
+				<a class="col col-50 border top-border right-border" href="" ng-click="go('appointment')">
+					<div class="row" style="font-size: 16px;">
+						<img src="img/appointment.png" style="width: 40px; height: 40px;">
+						Appointments
+					</div>
+				</a>
+
+				<a class="col col-50 border top-border" href="" ng-click="go('reminder')">
+					<div class="row" style="font-size: 18px;">
+						<img src="img/reminder.png" style="width: 40px; height: 40px;">
+						Reminders
+					</div>
+				</a>
+
+			</div>
+
+			<div class="row" style="">
+				<a class="col col-50 border top-border right-border" href="" ng-click="go('health')">
+					<div class="row" style="">
+                            <img src="img/health_icon.png" style="width: 40px; height: 40px;">
+							Health
+					</div>
+				</a>
+				<a class="col col-50 border top-border" href="" ng-click="go('setting')">
+					<div class="row" style="">
+                            <img src="img/setting.png" style="width: 40px; height: 40px;">
+							Settings
+					</div>
+				</a>
+			</div>
+
+            <a class="row" style="background-color: #43cee6; height: 52px;;" href="" ng-click="go('tomorrow')">
+                <div class="col col-90" style="padding-left: 10px !important; color: whitesmoke;">Tomorrow</div>
+                <div class="col col-10 icon ion-ios7-arrow-forward" style="color: whitesmoke"></div>
             </a>
-          </div>
+
+
+		</ion-content>
+	</ion-view>
+</script>
+
+<script id="today.html" type="text/ng-template">
+	<ion-view title="Today">
+		<ion-nav-buttons side="right" >
+			<button class="button button-clear" ng-click="showDelete = !showDelete">Edit
+			</button>
+		</ion-nav-buttons>
+
+		<ion-content has-header="true" padding="false">
+			<div class="row" style="background-color: deepskyblue; height: 153px;" href="">
+				<div class="col col-50">
+					<div style="float: left; " class="weather-info">
+						<h1>{{weather()}}</h1>
+						<h2>Evening thundery showers</h2>
+					</div>
+				</div>
+				<div class="col col-50">
+					<img src="img/weather.png" style="width: 120px; height: 120px; float: right;">
+				</div>
+			</div>
+			<div style="width: 100%; padding: 10px; color: whitesmoke; font-size: 20px; background-color: #43cee6;">Reminders</div>
+
+			<ion-list show-delete="showDelete">
+				<ion-item ng-repeat="item in reminders ">
+					<a href="" class="task-list">
+						<div class="list-title">{{item.title}}</div>
+						<div class="time icon ion-ios7-clock-outline">&nbsp{{item.date + " " + item.time}}</div>
+						<div class="location icon ion-ios7-location-outline">&nbsp&nbsp{{item.location}}</div>
+						<ion-delete-button class="ion-minus-circled"
+						                   ng-click="onItemDelete(item)">
+						</ion-delete-button>
+					</a>
+				</ion-item>
+
+				<div style="width: 100%; padding: 10px; color: whitesmoke; font-size: 20px; background-color: #43cee6;">Appointments</div>
+				<ion-item ng-repeat="item in appointments ">
+					<a href="" class="task-list">
+						<div class="list-title">{{item.title}}</div>
+						<div class="time icon ion-ios7-clock-outline">&nbsp{{item.date + " " + item.time}}</div>
+						<div class="location icon ion-ios7-location-outline">&nbsp&nbsp{{item.location}}</div>
+						<ion-delete-button class="ion-minus-circled"
+						                   ng-click="onItemDelete(item)">
+						</ion-delete-button>
+					</a>
+				</ion-item>
+			</ion-list>
+
+		</ion-content>
+	</ion-view>
+</script>
+
+<script id="doctor.html" type="text/ng-template">
+    <ion-view title="My Doctor">
+        <ion-content has-header="true" padding="false">
+	        <div style="margin: 30px 15px">
+		        <img src="img/doctor_profile.png" style="width: 100px; height: 100px; display: inline;">
+		        <div style="height: 100px; float: right; padding-top: 8px;">
+			        <h3 style="font-size: 22px;">Dr. Shen Zhiqi</h3>
+			        <h4 style="font-size: 16px;">Office Hour: </h4>
+			        <h4 style="font-size: 16px;">8:30am - 6:00pm</h4>
+		        </div>
+
+	        </div>
+	        <div class="list">
+		        <label class="item item-icon-right">
+			        <span class="input-label">Mobile Phone No: </span>
+			        <span class="">9021 3829</span>
+			        <i class="icon ion-ios7-telephone"></i>
+
+		        </label>
+		        <label class="item item-icon-right">
+			        <span class="input-label">Skype: </span>
+			        <span>shenzhiqi@live.com</span>
+			        <i class="icon ion-social-skype"></i>
+		        </label>
+		        <label class="item item-text-wrap">
+			        <span class="input-label">Office: </span>
+			        <span class="">Nanyang Technological University, Hall of Residence 2, 1-1-24, 41 Student Walk, Singapore 639549</span>
+		        </label>
+	        </div>
+	        <div class="padding">
+		        <button class="button button-block button-calm" ng-click="">
+			        Disconnect
+		        </button>
+	        </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="view-doctor.html" type="text/ng-template">
+    <ion-view title="Dr. Shen Zhiqi">
+        <ion-content has-header="true" padding="false">
+	        <div style="margin: 30px 15px">
+		        <img src="img/doctor_profile.png" style="width: 100px; height: 100px; display: inline;">
+		        <div style="height: 100px; float: right; padding-top: 8px;">
+			        <h3 style="font-size: 22px;">Dr. Shen Zhiqi</h3>
+			        <h4 style="font-size: 16px;">Office Hour: </h4>
+			        <h4 style="font-size: 16px;">8:30am - 6:00pm</h4>
+		        </div>
+
+	        </div>
+	        <div class="list">
+		        <label class="item item-icon-right">
+			        <span class="input-label">Mobile Phone No: </span>
+			        <span class="">9021 3829</span>
+			        <i class="icon ion-ios7-telephone"></i>
+
+		        </label>
+		        <label class="item item-icon-right">
+			        <span class="input-label">Skype: </span>
+			        <span>shenzhiqi@live.com</span>
+			        <i class="icon ion-social-skype"></i>
+		        </label>
+		        <label class="item item-text-wrap">
+			        <span class="input-label">Office: </span>
+			        <span class="">Nanyang Technological University, Hall of Residence 2, 1-1-24, 41 Student Walk, Singapore 639549</span>
+		        </label>
+	        </div>
+	        <div class="padding">
+		        <button class="button button-block button-calm" ng-click="">
+			        Connect
+		        </button>
+	        </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="health.html" type="text/ng-template">
+    <ion-view title="My Health Data">
+        <ion-content has-header="true" padding="false">
+            <img src="img/health1.png" style="width: 100%; display: block;">
+	        <img src="img/health2.png" style="width: 100%; display: block;">
+	        <img src="img/health3.png" style="width: 100%; display: block;">
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="reminder.html" type="text/ng-template">
+    <ion-view title="My Reminders">
+	    <ion-nav-buttons side="right" >
+		    <button class="button button-clear" ng-click="showDelete = !showDelete">Edit
+		    </button>
+	    </ion-nav-buttons>
+
+	    <ion-content has-header="true" padding="false">
+		    <ion-list show-delete="showDelete" style="margin-bottom: 130px;">
+			    <ion-item ng-repeat="item in reminders">
+				    <a href="" class="task-list" ng-click="showEditModal($index)">
+					    <div class="list-title">{{item.title}}</div>
+					    <div class="time icon ion-ios7-clock-outline">&nbsp{{item.date + " " + item.time}}</div>
+					    <div class="location icon ion-ios7-location-outline">&nbsp&nbsp{{item.location}}</div>
+					    <ion-delete-button class="ion-minus-circled"
+					                       ng-click="onItemDelete(item)">
+					    </ion-delete-button>
+				    </a>
+
+			    </ion-item>
+			    <div style="height: 44px;"></div>
+		    </ion-list>
+	    </ion-content>
+	    <div class="bar bar-footer bar-calm">
+		    <div class="button button-clear" style="width: 100%" ng-click="showNewModal()">Add New Reminder</div>
+	    </div>
+    </ion-view>
+</script>
+
+<script id="appointment.html" type="text/ng-template">
+    <ion-view title="My Appointments">
+	    <ion-nav-buttons side="right" >
+		    <button class="button button-clear" ng-click="showDelete = !showDelete">Edit
+		    </button>
+	    </ion-nav-buttons>
+
+	    <ion-content has-header="true" padding="false">
+		    <ion-list show-delete="showDelete">
+			    <ion-item ng-repeat="item in appointments" >
+				    <a href="" class="task-list">
+					    <div class="list-title">{{item.title}}</div>
+					    <div class="time icon ion-ios7-clock-outline">&nbsp{{item.date + " " + item.time}}</div>
+					    <div class="location icon ion-ios7-location-outline">&nbsp&nbsp{{item.location}}</div>
+					    <ion-delete-button class="ion-minus-circled"
+					                       ng-click="onItemDelete(item)">
+					    </ion-delete-button>
+				    </a>
+
+			    </ion-item>
+			    <div style="height: 44px;"></div>
+		    </ion-list>
+	    </ion-content>
+	    <div class="bar bar-footer bar-calm">
+		    <div class="button button-clear" style="width: 100%" ng-click="showNewModal()">Add New Appointment</div>
+	    </div>
+    </ion-view>
+</script>
+
+<script id="setting.html" type="text/ng-template">
+    <ion-view title="Settings">
+        <ion-content has-header="true" padding="">
+	        <div class="list">
+		        <label class="item item-icon-right" ng-click="go('about')">
+			        <span class="input-label">About</span>
+			        <i class="icon ion-ios7-arrow-forward"></i>
+		        </label>
+		        <li class="item item-toggle">
+			        Notification
+			        <label class="toggle toggle-calm" >
+				        <input type="checkbox">
+				        <div class="track">
+					        <div class="handle"></div>
+				        </div>
+			        </label>
+		        </li>
+	        </div>
 
         </ion-content>
-      </ion-view>
-    </script>
+    </ion-view>
+</script>
 
-  </body>
+<script id="about.html" type="text/ng-template">
+    <ion-view title="About">
+        <ion-content has-header="true" padding="">
+	        <div class="list">
+		        <label class="item " >
+			        <span class="input-label">Patient ID: DJD8HI3N2KH</span>
+		        </label>
+		        <label class="item " >
+			        <span class="input-label">Password: {{password}}</span>
+		        </label>
+	        </div>
+	        <button class="button button-block button-calm" ng-click="getPassword()">
+				Generate Password
+	        </button>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="search.html" type="text/ng-template">
+    <ion-view title="Search">
+        <ion-content has-header="true" padding="true">
+	        <div class="list list-inset">
+		        <label class="item item-input">
+			        <i class="icon ion-search placeholder-icon"></i>
+			        <input type="text" placeholder="Search" ng-model="searchText">
+		        </label>
+	        </div>
+	        <div class="list">
+		        <label class="item item-icon-right" ng-repeat="doctor in doctors | filter: searchText" ng-click="go()">
+			        <span class="input-label">{{doctor.email}}</span>
+			        <span class="input-label">{{doctor.name}}</span>
+			        <span class="input-label">{{doctor.office}}</span>
+			        <i class="icon ion-ios7-arrow-forward"></i>
+		        </label>
+	        </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="tomorrow.html" type="text/ng-template">
+	<ion-view title="Tomorrow">
+		<ion-nav-buttons side="right" >
+			<button class="button button-clear" ng-click="showDelete = !showDelete">Edit
+			</button>
+		</ion-nav-buttons>
+		<ion-content has-header="true" padding="false">
+			<div class="row" style="background-color: deepskyblue; height: 153px;" href="">
+				<div class="col col-50">
+					<div style="float: left; " class="weather-info">
+						<h1>{{weather()}}</h1>
+						<h2>Morning thundery showers</h2>
+					</div>
+				</div>
+				<div class="col col-50">
+					<img src="img/weather.png" style="width: 120px; height: 120px; float: right;">
+				</div>
+			</div>
+			<div style="width: 100%; padding: 10px; color: whitesmoke; font-size: 20px; background-color: #43cee6;">Reminders</div>
+
+			<ion-list show-delete="showDelete">
+				<ion-item ng-repeat="item in reminders">
+					<a href="" class="task-list">
+						<div class="list-title">{{item.title}}</div>
+						<div class="time icon ion-ios7-clock-outline">&nbsp{{item.date + " " + item.time}}</div>
+						<div class="location icon ion-ios7-location-outline">&nbsp&nbsp{{item.location}}</div>
+						<ion-delete-button class="ion-minus-circled"
+						                   ng-click="onItemDelete(item)">
+						</ion-delete-button>
+					</a>
+
+				</ion-item>
+
+				<div style="width: 100%; padding: 10px; color: whitesmoke; font-size: 20px; background-color: #43cee6">Appointments</div>
+
+				<ion-item ng-repeat="item in appointments">
+					<a href="" class="task-list">
+						<div class="list-title">{{item.title}}</div>
+						<div class="time icon ion-ios7-clock-outline">&nbsp{{item.date + " " + item.time}}</div>
+						<div class="location icon ion-ios7-location-outline">&nbsp&nbsp{{item.location}}</div>
+						<ion-delete-button class="ion-minus-circled"
+						                   ng-click="onItemDelete(item)">
+						</ion-delete-button>
+					</a>
+
+				</ion-item>
+
+			</ion-list>
+
+		</ion-content>
+	</ion-view>
+</script>
+
+
+<script id="new-reminder.html" type="text/ng-template">
+
+	<div class="modal">
+
+		<!-- Modal header bar -->
+		<ion-header-bar class="bar-secondary">
+			<h1 class="title">New Reminder</h1>
+			<button class="button button-clear button-calm" ng-click="closeNewModal()">Cancel</button>
+		</ion-header-bar>
+
+		<!-- Modal content area -->
+		<ion-content>
+
+			<form ng-submit="createReminder(reminder)">
+				<!--<ion-list class="list">-->
+				<div class="list">
+					<label class="item item-input item-floating-label">
+						<span class="input-label">Title</span>
+						<input type="text" placeholder="What do you need to do?" ng-model="reminder.title">
+					</label>
+					<label class="item item-input item-floating-label">
+						<span class="input-label">Date</span>
+						<input type="text" placeholder="Date" ng-model="reminder.date">
+					</label>
+					<label class="item item-input item-floating-label">
+						<span class="input-label">Time</span>
+						<input type="text" placeholder="Time" ng-model="reminder.time">
+					</label>
+					<label class="item item-input item-floating-label">
+						<span class="input-label">Location</span>
+						<input type="text" placeholder="Location" ng-model="reminder.location">
+					</label>
+				</div>
+				<div class="padding">
+					<button type="submit" class="button button-block button-calm">Create Reminder</button>
+				</div>
+			</form>
+
+		</ion-content>
+
+	</div>
+</script>
+
+<script id="edit-reminder.html" type="text/ng-template">
+
+	<div class="modal">
+
+		<!-- Modal header bar -->
+		<ion-header-bar class="bar-secondary">
+			<h1 class="title">Edit Reminder</h1>
+			<button class="button button-clear button-calm" ng-click="closeEditModal()">Done</button>
+		</ion-header-bar>
+
+		<!-- Modal content area -->
+		<ion-content>
+				<!--<ion-list class="list">-->
+				<div class="list">
+					<label class="item item-input">
+						<span class="input-label">Title</span>
+						<input type="text" placeholder="What do you need to do?" ng-model="editReminder.title">
+					</label>
+					<label class="item item-input">
+						<span class="input-label">Date</span>
+						<input type="text" placeholder="Date" ng-model="editReminder.date">
+					</label>
+					<label class="item item-input">
+						<span class="input-label">Time</span>
+						<input type="text" placeholder="Time" ng-model="editReminder.time">
+					</label>
+					<label class="item item-input">
+						<span class="input-label">Location</span>
+						<input type="text" placeholder="Location" ng-model="editReminder.location">
+					</label>
+				</div>
+
+		</ion-content>
+
+	</div>
+</script>
+
+
+<script id="new-appointment.html" type="text/ng-template">
+
+	<div class="modal">
+
+		<!-- Modal header bar -->
+		<ion-header-bar class="bar-secondary">
+			<h1 class="title">New Appointment</h1>
+			<button class="button button-clear button-calm" ng-click="closeNewModal()">Cancel</button>
+		</ion-header-bar>
+
+		<!-- Modal content area -->
+		<ion-content>
+
+			<form ng-submit="createAppointment(appointment)">
+				<!--<ion-list class="list">-->
+				<div class="list">
+					<label class="item item-input item-floating-label">
+						<span class="input-label">Title</span>
+						<input type="text" placeholder="What do you need to do?" ng-model="appointment.title">
+					</label>
+
+					<label class="item item-input item-select">
+						<div class="input-label">
+							Date
+						</div>
+						<select ng-model="appointment.date">
+							<option>2014/10/05</option>
+							<option>2014/10/06</option>
+						</select>
+					</label>
+
+					<label class="item item-input item-select">
+						<div class="input-label">
+							Time
+						</div>
+						<select ng-model="appointment.time">
+							<option>12:15pm</option>
+							<option>16:45pm</option>
+						</select>
+					</label>
+					<label class="item item-input item-floating-label">
+						<span class="input-label">Location</span>
+						<input type="text" placeholder="Location" ng-model="appointment.location">
+					</label>
+				</div>
+				<div class="padding">
+					<button type="submit" class="button button-block button-calm">Create Appointment</button>
+				</div>
+			</form>
+
+		</ion-content>
+
+	</div>
+</script>
+
+</body>
 </html>

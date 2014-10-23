@@ -1,32 +1,20 @@
 /* Empty. Add your own CSS if you like */
 .row {
-    display: -webkit-flex;
-    -webkit-justify-content: center;
-    -webkit-align-content: stretch;
-    -webkit-align-items: center;
-    margin: 0 !important;
-    padding: 0;
-}
+	display: -webkit-flex;
+	-webkit-justify-content: left;
+	-webkit-align-content: stretch;
+	-webkit-align-items: center;
+	margin: 0 !important;
+	padding: 0;
+	font-size: 20px;
+	height: 100px;
+	background-color: cornsilk;
+	color: black;
 
-.col {
-	text-align: center;
-	padding: 25px 0px 15px 0px;
-}
-
-.icon {
-	font-size: 80px;
 }
 
 .icon-title {
-	font-size: 20px;
-}
-
-a {
-	text-decoration: none;
-}
-
-a:hover {
-	background: gray;
+	text-align: left;
 }
 
 body {
@@ -35,11 +23,13 @@ body {
 	overflow: hidden;
 }
 
-.border {
-	border-color: gray !important;
-	border-style: solid !important;
-/*	border: 1px;*/
+ion-content {
+	background-color: cornsilk !important;
+}
 
+.border {
+	border-color: #c0c0c0 !important;
+	border-style: solid !important;
 }
 
 .right-border {
@@ -48,4 +38,80 @@ body {
 
 .top-border {
 	border-top: 3px;
+}
+
+.col {
+	margin: 0 !important;
+	padding: 0 !important;
+	border-style: solid;
+	/*border-width: 3px;*/
+}
+
+
+.weather-info h1 {
+	text-align: left;
+	margin-left: 10px;
+	font-size: 40px;
+	color: whitesmoke;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.weather-info h2 {
+	text-align: left;
+	margin-left: 10px;
+	color: whitesmoke;
+	font-size: 20px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.row img {
+	margin: 0 5px 0 10px;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+.list-title {
+	font-size: 25px !important;
+}
+
+.time {
+	padding: 8px 0 0 0;
+}
+
+.item-content {
+
+	background-color: cornsilk !important;
+}
+
+/*.item-delete {*/
+	/*background-color: cornsilk !important;*/
+/*}*/
+
+.item {
+	background-color: cornsilk !important;
+
+}
+
+.task-list {
+	color: black !important;
+}
+
+input {
+	/*font-size: 29px !important;*/
+}
+
+select {
+	background-color: cornsilk !important;
+}
+
+.today-header h1 {
+	color: whitesmoke;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.today-header h2 {
+	color: whitesmoke;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
